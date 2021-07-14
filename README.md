@@ -10,18 +10,18 @@ total = a+b+c+d+e
 avg = total/5
 print("Total Mark is: ", total)
 print("Average is: ", avg)
-if avg > 90:
-    print("Grade A")
-elif avg <= 89 and avg >= 80:
-    print("Grade B")
-elif avg <=79 and avg >=70:
-    print("Grade C")
-elif avg <=69 and avg >=60:
-    print("Grade D")
-elif avg <=59 and avg >=50:
-    print("Grade E")
+if avg>90:
+    grade="A"
+elif avg>80 and avg<89:
+    grade="B"
+elif avg>70 and avg<79:
+    grade="C"
+elif avg>60 and avg<69:
+    grade="D"
+elif avg>50 and avg<59:
+    grade="C"
 else:
-    print("Grade F")
+    grade="E"
 
 import mysql.connector
 
@@ -32,5 +32,5 @@ db = mysql.connector.connect(
     database="learning"
 )
 mycursor = db.cursor()
-mycursor.execute("INSERT INTO mytrial (name,dept,mark1,mark2,mark3,mark4,mark5,total,avg) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",(n,dep,a,b,c,d,e,total,avg))
+mycursor.execute("INSERT INTO mytrial (name,dept,mark1,mark2,mark3,mark4,mark5,total,avg,grade) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(n,dep,a,b,c,d,e,total,avg,grade))
 db.commit()
